@@ -1,0 +1,74 @@
+{% extends "./base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-6 col-lg-4 col-xl-4 col-sm-12">
+        {% if messages %}
+            {% for message in messages%}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong class="text-dark">{{ message }}!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        {% endif %}
+        <h2>Crear usuario</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registerUser/" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                    <div class="form-group mb-3">
+                        <input type="text" id="fullName" name="fullName" class="form-control"
+                            placeholder="Nombre completo" minlength="5" maxlength="50" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="email" id="email" name="email" class="form-control"
+                            placeholder="Correo electronico" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="date" id="birthday" name="birthday" class="form-control"
+                            placeholder="Fecha de nacimiento" required>
+                    </div>
+                    <div class="form-group mb-3 d-grid gap-2">
+                        <label>Selecionar foto de perfil</label>
+                        <input type="file" id="profilePicture" name="profilePicture" accept="image/png, image/jpeg">  
+                    </div>
+                    <div class="form-group d-grid gap-2">
+                        <button type="submit" class="btn btn-success text-white">Guardar</button>  
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-8 col-xl-8 col-sm-12">
+        <h1 class="text-center"> Listado de usuarios </h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Imagen de perfil</th>
+                        <th>Id</th>
+                        <th>Nombre completo</th>
+                        <th>Correo electronico</th>
+                        <th>Fecha de nacimiento</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td><img src="../../../media/{{user.profilePicture }}" alt="img-profile" width="50px" height="50px"></td>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.fullName }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.dateBirth }}</td>
+                        <th><a href="editUser/{{ user.id }}" class="btn btn-info">Editar</a></th>
+                        <th><a href="deleteUser/{{ user.id }}" class="btn btn-danger btnDelete">Eliminar</a></th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
