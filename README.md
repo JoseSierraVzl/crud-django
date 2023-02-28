@@ -47,4 +47,4 @@ Sugerencia: para esta instalación local use al usuario como admin y la contrase
 
 Ejecutar aplicación con el siguiente comando:
 
-`python manage.py runserver`
+`python3 manage.py runserver`
