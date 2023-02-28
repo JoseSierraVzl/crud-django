@@ -21,7 +21,7 @@
 ## Base de Datos:
 Configuración `/settings.py` :
 	
-	'ENGINE': 'django.db.backends.mysql', 
+	'ENGINE': 'django.db.backends.sqlite3', 
 	'NAME': 'crud_django.db', #nombre de la base de datos
 	
 	
