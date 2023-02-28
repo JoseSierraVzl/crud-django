@@ -15,6 +15,10 @@ def registerUser(request):
     email = request.POST['email']
     profilePicture = request.FILES['profilePicture']
 
+    if User.objects.filter(email=email).count():
+        messages.success(request, "Direccion de email ya existe")
+        return redirect('/')
+
     user = User.objects.create(
         fullName = fullName,
         dateBirth = dateBirth,
