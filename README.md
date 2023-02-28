@@ -15,3 +15,14 @@
 `python3 manage.py migrate`
 
 > **Si utilizo una versión inferior a python3, remplazar `python3` por `python`, ejemplo: `python manage.py makemigrations`**
+
+
+## Base de Datos:
+Configuración `/settings.py` :
+	
+	'ENGINE': 'django.db.backends.mysql', 
+	'NAME': 'crud_django', #nombre de la base de datos
+	'USER': '',
+	'PASSWORD': '',
+	'HOST': 'localhost'
+	'PORT': '3306',
