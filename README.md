@@ -1,9 +1,6 @@
 # Instrucciones para configurar entorno:
 
-	El CRUD está construido usado Django, Python3 y MySql, con las siguientes especificaciones:
-	
-- Python: 3.8.10
-- Django: 4.1.7
+	El CRUD está construido usado Django, Python3 y Sqlite3.
 	
 	Ejecutar lo siguientes comandos para instalar las dependencias necesarias:
 
@@ -25,11 +22,7 @@
 Configuración `/settings.py` :
 	
 	'ENGINE': 'django.db.backends.mysql', 
-	'NAME': 'crud_django', #nombre de la base de datos
-	'USER': '',
-	'PASSWORD': '',
-	'HOST': 'localhost'
-	'PORT': '3306',
+	'NAME': 'crud_django.db', #nombre de la base de datos
 	
 	
 ## Crear usuario administrador de Django
